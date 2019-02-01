@@ -44,13 +44,9 @@ playSound = stroke => {
     stroke.classList.add('playing');
 }
 
-function removeTransition(e) {
-    if(e.propertyName !== 'transform') return;
-    this.classList.remove('playing');
-}
-
 createCircle = () => {
     const circle = document.createElement('div');
+    circle.id = 'circle';
     circle.style.height = '100px';
     circle.style.width = '100px';
     circle.style.borderRadius = '50%';
@@ -59,6 +55,13 @@ createCircle = () => {
     circle.style.left = '200px';
     circle.style.top = '200px';
     document.body.appendChild(circle);
+}
+
+function removeTransition(e) {
+    if(e.propertyName !== 'transform') return;
+    this.classList.remove('playing');
+    const circle = document.getElementById('circle');
+    circle.parentNode.removeChild(circle);
 }
 
 const keys = document.querySelectorAll('.key');
