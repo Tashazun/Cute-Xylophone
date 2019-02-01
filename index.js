@@ -45,17 +45,23 @@ playSound = stroke => {
 }
 
 createCircle = () => {
+    // Randomize the size and color of created element
+    const divsize = ((Math.random()*100) + 50).toFixed();
     const color = `#${Math.round(0xffffff * Math.random()).toString(16)}`;
-    console.log(color);
+
+    // Make position sensitive to size and document's width
+    const posx = `${(Math.random() * (document.body.clientWidth - divsize)).toFixed()}px`;
+    const posy = `${(Math.random() * (document.body.clientHeight - divsize)).toFixed()}px`;
+
     const circle = document.createElement('div');
     circle.id = 'circle';
-    circle.style.height = '100px';
-    circle.style.width = '100px';
+    circle.style.height = `${divsize}px`;
+    circle.style.width = `${divsize}px`;
     circle.style.borderRadius = '50%';
     circle.style.backgroundColor = color;
     circle.style.position = 'absolute';
-    circle.style.left = '200px';
-    circle.style.top = '200px';
+    circle.style.left = posx;
+    circle.style.top = posy;
     document.body.appendChild(circle);
 }
 
