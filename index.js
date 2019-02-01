@@ -45,12 +45,14 @@ playSound = stroke => {
 }
 
 createCircle = () => {
+    const color = `#${Math.round(0xffffff * Math.random()).toString(16)}`;
+    console.log(color);
     const circle = document.createElement('div');
     circle.id = 'circle';
     circle.style.height = '100px';
     circle.style.width = '100px';
     circle.style.borderRadius = '50%';
-    circle.style.backgroundColor = 'blue';
+    circle.style.backgroundColor = color;
     circle.style.position = 'absolute';
     circle.style.left = '200px';
     circle.style.top = '200px';
