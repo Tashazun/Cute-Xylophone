@@ -47,7 +47,7 @@ playSound = stroke => {
 createCircle = () => {
     // Randomize the size and color of created element
     const divsize = ((Math.random()*100) + 50).toFixed();
-    const color = `#${Math.round(0xffffff * Math.random()).toString(16)}`;
+    const color = `#${Math.round(0xffffff * Math.random()).toString(16)}40`;
 
     // Make position sensitive to size and document's width
     const posx = `${(Math.random() * (document.body.clientWidth - divsize)).toFixed()}px`;
@@ -68,8 +68,6 @@ createCircle = () => {
 function removeTransition(e) {
     if(e.propertyName !== 'transform') return;
     this.classList.remove('playing');
-    const circle = document.getElementById('circle');
-    circle.parentNode.removeChild(circle);
 }
 
 const keys = document.querySelectorAll('.key');
