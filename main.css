@@ -4,7 +4,7 @@ body {
 }
 
 kbd {
-    color: rgb(194, 69, 69);
+    color: #757575;
     font-size: 2rem;
 }
 
@@ -23,7 +23,7 @@ kbd {
     height: 5rem;
     justify-content: center;
     align-items: center;
-    border: .3rem solid rgb(194, 69, 69);
+    border: .3rem solid #757575;
     border-radius: .5rem;
     flex: 0 1 auto;
     transition: all .07s ease-in-out;
@@ -31,6 +31,17 @@ kbd {
 
 .playing {
     transform: scale(1.1);
-    border-color: rgb(190, 27, 27);
-    box-shadow: 0 0 10px rgb(190, 27, 27);
+    border-color: #b2b2b2;
+    box-shadow: 0 0 10px #b2b2b2;
+}
+
+.circle {
+    animation: expand 5s ease-in;
+}
+
+@keyframes expand {
+
+    100% {
+        transform: scale(10);
+    }
 }

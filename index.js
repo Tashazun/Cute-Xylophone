@@ -1,3 +1,5 @@
+
+// Constructor class to create sounds that can be layered on top of each other
 class Sound {
     constructor(context) {
         this.context = context;
@@ -29,6 +31,7 @@ class Sound {
 
 let context = new (window.AudioContext || window.webkitAudioContext)();
 
+// Adding event listener that looks for the assigned frequency on each key that is pressed
 document.addEventListener('keydown', e => {
     const stroke = document.querySelector(`.key[data-key="${e.keyCode}"]`);
     playSound(stroke);
@@ -54,7 +57,7 @@ createCircle = () => {
     const posy = `${(Math.random() * (document.body.clientHeight - divsize)).toFixed()}px`;
 
     const circle = document.createElement('div');
-    circle.id = 'circle';
+    circle.className = 'circle';
     circle.style.height = `${divsize}px`;
     circle.style.width = `${divsize}px`;
     circle.style.borderRadius = '50%';
@@ -65,6 +68,7 @@ createCircle = () => {
     document.body.appendChild(circle);
 }
 
+// Removes the scale effect from the keys as they are played
 function removeTransition(e) {
     if(e.propertyName !== 'transform') return;
     this.classList.remove('playing');
@@ -72,3 +76,13 @@ function removeTransition(e) {
 
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+// Removes first div.circle after a second
+removeCircle = () => {
+    const circle = document.getElementsByClassName('circle')[0];
+
+    if (circle === undefined) return;
+    document.body.removeChild(circle);
+}
+
+window.setInterval(removeCircle, 1000);
